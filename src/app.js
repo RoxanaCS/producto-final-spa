@@ -32,6 +32,8 @@ function GoogleSignUp() {
       user = result.user;
       email = user.email;
       $('.inicio').hide() && $('.web').show();
+      // función para localizar la posición del usuario
+      searchPosition();
       // guardar la foto, nombre y corre de usuario en firebase
       userData.orderByChild('email').equalTo(user.email).on('value', function(snapshot) {
         // ver todos los datos que se obtienen del usuario
@@ -61,6 +63,19 @@ function GoogleSignUp() {
     });
   } else {
     firebase.auth().signOut();
+  }
+}
+// buscar la posición
+function searchPosition() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      console.log(pos.lat);
+      console.log(pos.lng);
+    });
   }
 }
 
