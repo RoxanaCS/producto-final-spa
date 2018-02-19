@@ -5,7 +5,7 @@ $(document).ready(function() {
 });
 
 // Al hacer click en el boton de registro con google:
-document.getElementById('init').addEventListener('click', GoogleSignUp, false);
+document.getElementById('login').addEventListener('click', GoogleSignUp, false);
 // Initialize Firebase
 var config = {
   apiKey: 'AIzaSyC9DuOb1sFOe-0_rETYXkM44mtcK3CNkto',
@@ -65,6 +65,12 @@ function GoogleSignUp() {
     firebase.auth().signOut();
   }
 }
+// salir de la sesión
+$('#logout').click(function() {
+  firebase.auth().signOut();
+  $('.inicio').show();
+  $('.web').hide();
+});
 // buscar la posición
 function searchPosition() {
   if (navigator.geolocation) {
