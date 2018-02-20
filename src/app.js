@@ -6,10 +6,10 @@ $(document).ready(function() {
   $('.clase2').hide();
 });
 // Definiendo variables
-let lat;
-let lng;
-let st;
-let spf;
+var lat;
+var lng;
+var st;
+var spf;
 
 // Al hacer click en el boton de registro con google:
 document.getElementById('login').addEventListener('click', GoogleSignUp, false);
@@ -61,10 +61,10 @@ function GoogleSignUp() {
       // sacar la foto de usuario
       console.log(user.photoURL);
     }).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      var errorEmail = error.email;
-      var credencial = error.credencial;
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      let errorEmail = error.email;
+      let credencial = error.credencial;
       // console.log(errorCode);
       if (errorCode === 'auth/account-exists-with-different-credential') {
         alert('Es el mismo usuario');
@@ -80,19 +80,16 @@ $('#logout').click(function() {
   $('.inicio').show();
   $('.web').hide();
 });
-
 // Función select skinTone
 $('#skinTone').on('change', function() {
   st = $('#skinTone').val();
   getExposureIndex();
 });
-
 // Función select SPF
 $('#sunProtectionFactor').on('change', function() {
   spf = $('#sunProtectionFactor').val();
   getExposureIndex();
 });
-
 // buscar la posición
 function searchPosition() {
   if (navigator.geolocation) {
@@ -126,9 +123,9 @@ function getUVIndex() {
       console.log(response.result.uv_max);
       console.log(response.result.uv_max_time);
       // transformar a la hora local
-      var dateFormat = 'YYYY-DD-MM HH:mm:ss';
-      var testDateUtc = moment.utc(response.result.uv_max_time);
-      var localDate = testDateUtc.local();
+      let dateFormat = 'HH:mm';
+      let testDateUtc = moment.utc(response.result.uv_max_time);
+      let localDate = testDateUtc.local();
       console.log(localDate.format(dateFormat));
     },
     error: function(response) {
