@@ -1,9 +1,9 @@
 $(document).ready(function() {
   // para deslogear al usuario cada vez que entre a la página
-  /*firebase.auth().signOut();*/
+  firebase.auth().signOut();
   $('select').material_select();
-  /*$('.web').hide();
-  $('.clase2').hide();*/
+  $('.web').hide();
+  $('.clase2').hide();
 });
 // Definiendo variables
 var lat;
@@ -43,6 +43,7 @@ function GoogleSignUp() {
       $('.clase2').show();
       // función para localizar la posición del usuario
       searchPosition();
+      activateSearch();
       // guardar la foto, nombre y corre de usuario en firebase
       userData.orderByChild('email').equalTo(user.email).on('value', function(snapshot) {
         // ver todos los datos que se obtienen del usuario
@@ -159,13 +160,31 @@ function getExposureIndex() {
     url: 'https://api.openuv.io/api/v1/exposure?lat=' + lat + '&lng=' + lng + '&st=' + st + '&spf=' + spf,
     success: function(response) {
       // handle successful response
-      console.log(response.result)
+      console.log(response.result);
     },
     error: function(response) {
       // handle error response
     }
   });
 }
-
-// borrar
-searchPosition()
+// para buscar cualquier dirección y buscar el uv ahí
+$('#search').on('click', function() {
+  fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${$('#startInput').val()}&key=AIzaSyDKOv5tv0rN5Mih51I-c6XHKhxCqa-AEC8`)
+    .then(function(response) {
+    // Turns the the JSON into a JS object
+      return response.json();
+    })
+    .then(function(data) {
+      console.log(data);
+      lat = data.results[0].geometry.location.lat;
+      lng = data.results[0].geometry.location.lng;
+      getUVIndex();
+    })
+    .catch(function(error) {
+    });
+});
+// función para autocompletar
+function activateSearch() {
+  var startInput = document.getElementById('startInput');
+  new google.maps.places.Autocomplete(startInput);
+}
