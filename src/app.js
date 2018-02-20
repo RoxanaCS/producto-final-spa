@@ -1,9 +1,9 @@
 $(document).ready(function() {
   // para deslogear al usuario cada vez que entre a la página
-  firebase.auth().signOut();
-  $('.web').hide();
+  /*firebase.auth().signOut();*/
   $('select').material_select();
-  $('.clase2').hide();
+  /*$('.web').hide();
+  $('.clase2').hide();*/
 });
 // Definiendo variables
 let lat;
@@ -130,6 +130,19 @@ function getUVIndex() {
       var testDateUtc = moment.utc(response.result.uv_max_time);
       var localDate = testDateUtc.local();
       console.log(localDate.format(dateFormat));
+
+      // Nivel UV Color Change Section Function
+      if (response.result.uv <= 3) {
+        $('#colorChange').css('background-color', '#558b2f');
+      } else if (response.result.uv > 3 && response.result.uv <= 6) {
+        $('#colorChange').css('background-color', '#F9A825');
+      } else if (response.result.uv > 6 && response.result.uv <= 8) {
+        $('#colorChange').css('background-color', '#EF6C00');
+      } else if (response.result.uv > 8 && response.result.uv <= 11) {
+        $('#colorChange').css('background-color', '#B71C1C');
+      } else if (response.result.uv > 11) {
+        $('#colorChange').css('background-color', '#6A1B9A');
+      }
     },
     error: function(response) {
     }
@@ -149,23 +162,13 @@ function getExposureIndex() {
     url: 'https://api.openuv.io/api/v1/exposure?lat=' + lat + '&lng=' + lng + '&st=' + st + '&spf=' + spf,
     success: function(response) {
       // handle successful response
-      console.log(response.result);
-      $('#exposureTime').text(response.result.exposure_time);
-      // Color Change Section Function
-      if (response.result.st === 1) {
-        $('#colorChange').css('background-color', '#558b2f');
-      } else if (response.result.st === 2) {
-        $('#colorChange').css('background-color', '#F9A825');
-      } else if (response.result.st === 3) {
-        $('#colorChange').css('background-color', '#EF6C00');
-      } else if (response.result.st === 4) {
-        $('#colorChange').css('background-color', '#B71C1C');
-      } else if (response.result.st === 5) {
-        $('#colorChange').css('background-color', '#6A1B9A');
-      }
+      console.log(response.result)
     },
     error: function(response) {
       // handle error response
     }
   });
 }
+
+// borrar
+searchPosition()
