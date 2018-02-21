@@ -11,16 +11,45 @@
   <link rel="stylesheet" href="src/main.css">
 </head>
 <body>
-  <div class="container inicio">
-    <div class="parallax-container">
-     <div class="parallax"><img src="src/images/background.jpg"></div>
+  <div class="had-container inicio">
+    <div class="parallax-container logueo">
+      <div class="parallax"><img src="src\images\background.jpg"></div>
+      <div class="row"><br>
+        <div class="col m8 s10 offset-m2 offset-s1 center">
+          <h4 class="truncate bg-card-user">
+            <img src="src\images\logo.png" alt="" class="circle responsive-img">
+            <div class="row login">
+              <h4 class="welcome">¡Welcome!</h4>
+                <div class="row">
+                  <button id="login" class="btn waves-effect waves-light red darken-2" type="submit">Sing in with <i class="fab fa-google"></i>oogle</button>
+                </div>
+                <p class="subtitle"><i class="fas fa-bolt"></i>  First Chilean UV app</p>
+                <p class="subtitle"><i class="fas fa-bolt"></i>  Real-time UV Index</p>
+                <p class="subtitle"><i class="fas fa-bolt"></i>  Safe Exposure Time</p>
+                <p class="subtitle"><i class="fas fa-bolt"></i>  We take care of you!</p>
+            </div>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="page-footer grey darken-4">
+    <div class="footer-copyright">
+      <div class="container center">Copyright © 2018</div>
+    </div>
+  </footer>
+  <!-- <div class="container-fluid inicio">
+     <div class="row">
+       <div class="col s12">
+         <h1 class="title_inicio">Welcome to UV app</h1>
+       </div>
+     </div>
      <div class="row">
        <div class="col s12">
          <button id="login" class="btn" type="submit">Ingresar</button>
        </div>
      </div>
-   </div>
-  </div>
+  </div> -->
   <section class="web">
     <div class="container">
       <div class="row">
@@ -77,6 +106,7 @@
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKOv5tv0rN5Mih51I-c6XHKhxCqa-AEC8&libraries=places" type="text/javascript"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <script src="src/moment.js"></script>
   <script src="src/app.js"></script>
 </body>

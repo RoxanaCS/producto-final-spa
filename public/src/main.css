@@ -1,9 +1,40 @@
+body {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+ }
+.bg-card-user {
+   background: rgba(255,198,25,.3);
+   padding: 15px 0;
+}
+.welcome{
+  color: #ffff;
+  margin-bottom: 1em;
+}
+.subtitle{
+  font-size: 0.5em;
+  color: #ffff;
+  line-height: normal;
+}
+.truncate img {
+   width: 180px;
+   margin-top: 3px;
+   margin-bottom: 3px;
+}
+.logueo {
+   height: 650px;
+}
+.login {
+   width: 85%;
+   margin: 0.5em auto;
+   padding: 10px;
+}
+#login{
+  margin-bottom: 1em;
+}
 #colorChange{
   width: 100px;
   padding: 10%;
   background-color: #558b2f;
   transition: background-color 0.5s ease;;
-}
-.parallax-container {
-      height: 50em;
 }
