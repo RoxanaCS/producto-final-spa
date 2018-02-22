@@ -216,7 +216,7 @@ function uvColor(data) {
     $('body').css('background-color', '#6A1B9A');
     $('.actColor').css('background-color', '#6A1B9A');
   }
-}
+} 
 function circleDisplay(data) {
   let widthCircle;
   if ($(document).width() > 576) {
