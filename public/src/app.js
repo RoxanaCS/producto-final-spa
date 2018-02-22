@@ -2,6 +2,7 @@ $(document).ready(function() {
   // para deslogear al usuario cada vez que entre a la página
   firebase.auth().signOut();
   $('select').material_select();
+  $('.contain').hide();
   $('.web').hide();
   $('.clase2').hide();
   $('.parallax').parallax();
@@ -40,6 +41,7 @@ function GoogleSignUp() {
       user = result.user;
       email = user.email;
       $('.inicio').hide();
+      $('.contain').show();
       $('.web').show();
       $('.clase2').show();
       // función para localizar la posición del usuario
@@ -48,7 +50,7 @@ function GoogleSignUp() {
       // guardar la foto, nombre y corre de usuario en firebase
       userData.orderByChild('email').equalTo(user.email).on('value', function(snapshot) {
         // ver todos los datos que se obtienen del usuario
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
         if (snapshot.val() === null) {
           userData.push({
             photo: user.photoURL,
@@ -59,9 +61,9 @@ function GoogleSignUp() {
         }
       });
       // sacar el nombre de usuario
-      console.log(user.displayName);
+      // console.log(user.displayName);
       // sacar la foto de usuario
-      console.log(user.photoURL);
+      // console.log(user.photoURL);
     }).catch(function(error) {
       let errorCode = error.code;
       let errorMessage = error.message;
@@ -80,6 +82,7 @@ function GoogleSignUp() {
 $('#logout').click(function() {
   firebase.auth().signOut();
   $('.inicio').show();
+  $('.contain').hide();
   $('.web').hide();
   $('.clase2').hide();
 });
@@ -121,10 +124,10 @@ function getUVIndex() {
     },
     url: 'https://api.openuv.io/api/v1/uv?lat=' + lat + '&lng=' + lng + '&alt=',
     success: function(response) {
-      console.log(response);
-      console.log(response.result.uv);
-      console.log(response.result.uv_max);
-      console.log(response.result.uv_max_time);
+      // console.log(response);
+      // console.log(response.result.uv);
+      // console.log(response.result.uv_max);
+      // console.log(response.result.uv_max_time);
 
       circleDisplay(response);
       uvColor(response);
@@ -149,7 +152,7 @@ function getExposureIndex() {
     url: 'https://api.openuv.io/api/v1/exposure?lat=' + lat + '&lng=' + lng + '&st=' + st + '&spf=' + spf,
     success: function(response) {
       // handle successful response
-      console.log(response.result);
+      // console.log(response.result);
       displayMinutes(response.result);
     },
     error: function(response) {
@@ -165,7 +168,7 @@ $('#search').on('click', function() {
       return response.json();
     })
     .then(function(data) {
-      console.log(data);
+      // console.log(data);
       lat = data.results[0].geometry.location.lat;
       lng = data.results[0].geometry.location.lng;
       getUVIndex();
@@ -196,31 +199,31 @@ function displayMinutes(data) {
 function uvColor(data) {
   // Nivel UV Color Change Section Function
   if (data.result.uv <= 3) {
-    $('body').css('background-color', '#39601F');
+    $('.contain').css('background-color', '#39601F');
     $('.indexNowFocus').html('Índice Bajo');
     $('.actColor').css('background-color', '#558b2f');
   } else if (data.result.uv > 3 && data.result.uv <= 6) {
     $('.indexNowFocus').html('Índice Moderado');
-    $('body').css('background-color', '#F9A825');
+    $('.contain').css('background-color', '#F9A825');
     $('.actColor').css('background-color', '#F9A825');
   } else if (data.result.uv > 6 && data.result.uv <= 8) {
     $('.indexNowFocus').html('Índice Alto');
-    $('body').css('background-color', '#EF6C00');
+    $('.contain').css('background-color', '#EF6C00');
     $('.actColor').css('background-color', '#EF6C00');
   } else if (data.result.uv > 8 && data.result.uv <= 11) {
     $('.indexNowFocus').html('Índice Muy Alto');
-    $('body').css('background-color', '#B71C1C');
+    $('.contain').css('background-color', '#B71C1C');
     $('.actColor').css('background-color', '#B71C1C');
   } else if (data.result.uv > 11) {
     $('.indexNowFocus').html('Índice Ext Alto');
-    $('body').css('background-color', '#6A1B9A');
+    $('.contain').css('background-color', '#6A1B9A');
     $('.actColor').css('background-color', '#6A1B9A');
   }
-} 
+}
 function circleDisplay(data) {
   let widthCircle;
   if ($(document).width() > 576) {
-    widthCircle = 250;
+    widthCircle = 230;
   } if ($(document).width() < 576 && $(document).width() > 300) {
     widthCircle = 130;
   }

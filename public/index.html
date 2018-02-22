@@ -24,7 +24,7 @@
                   <button id="login" class="btn waves-effect waves-light red darken-2" type="submit">Sign in <i class="fab fa-google"></i>oogle</button>
                 </div>
                 <p class="subtitle"><i class="fas fa-bolt"></i>  La primera UV app chilena</p>
-                <p class="subtitle"><i class="fas fa-bolt"></i>  Índice Uv en tiempo real</p>
+                <p class="subtitle"><i class="fas fa-bolt"></i>  Índice UV en tiempo real</p>
                 <p class="subtitle"><i class="fas fa-bolt"></i>  Tiempo seguro de exposición</p>
                 <p class="subtitle"><i class="fas fa-bolt"></i>  ¡Nosotros te cuidamos!</p>
             </div>
@@ -38,117 +38,107 @@
       <div class="container center">Copyright © 2018</div>
     </div>
   </footer>
-  <!-- <div class="container-fluid inicio">
-     <div class="row">
-       <div class="col s12">
-         <h1 class="title_inicio">Welcome to UV app</h1>
-       </div>
-     </div>
-     <div class="row">
-       <div class="col s12">
-         <button id="login" class="btn" type="submit">Ingresar</button>
-       </div>
-     </div>
-  </div> -->
-  <section class="web">
-    <div class="row clearMargin">
-      <div class="col s12 m4 offset-m4 firstSection">
-        <!-- Banner Top -->
-        <a id="logout" class="" type="submit">Salir<i class="material-icons">arrow_forward</i></a>
+  <div class="container-fluid contain">
+    <section class="web">
+      <div class="row clearMargin">
+        <div class="col s12 m6 offset-m3 firstSection">
+          <!-- Banner Top -->
+          <a id="logout" class="" type="submit">Salir<i class="material-icons">arrow_forward</i></a>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="clase2">
-    <div class="row clearMargin">
-      <div class="col s12 noPadding m4 offset-m4">
-        <div class="row uvIndex clearMargin">
-          <div class="col s4">
-            <div class="logo"></div>
-          </div>
-          <div class="col s8">
-            <p class="indexNow">Ahora</p>
-            <p class="indexNowFocus">Índice Alto</p>
+    </section>
+    <section class="clase2">
+      <div class="row clearMargin">
+        <div class="col s12 noPadding m6 offset-m3">
+          <div class="row uvIndex clearMargin">
+            <div class="col s4">
+              <div class="logo"></div>
+            </div>
+            <div class="col s8">
+              <p class="indexNow">Ahora</p>
+              <p class="indexNowFocus">Índice Alto</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="clase2">
-    <div class="row clearMargin progressBar">
-      <div class="col s12 m4 offset-m4">
-        <div class="row clearMargin">
-          <div class="col s3 m2">
-            <div class="actColor">
-              <p class="smallTitle">NOW</p>
-              <p class="countText actual">15</p>
+    </section>
+    <section class="clase2">
+      <div class="row clearMargin progressBar">
+        <div class="col s12 m6 offset-m3">
+          <div class="row clearMargin">
+            <div class="col s3 m3">
+              <div class="actColor">
+                <p class="smallTitle">NOW</p>
+                <p class="countText actual">15</p>
+              </div>
+              <p class="smallFocus actualTime">A las 20:45</p>
             </div>
-            <p class="smallFocus actualTime">A las 20:45</p>
-          </div>
-          <div class="col s6 m8">
-            <!-- Progress Bar -->
-            <div id="circle"></div>
-          </div>
-          <div class="col s3 m2">
-            <div class="maxColor">
-              <p class="smallTitle">MAX</p>
-              <p class="countText max">15</p>
+            <div class="col s6 m6">
+              <!-- Progress Bar -->
+              <div id="circle"></div>
             </div>
-            <p class="smallFocus maxTime">A las 20:45</p>
+            <div class="col s3 m3">
+              <div class="maxColor">
+                <p class="smallTitle">MAX</p>
+                <p class="countText max">15</p>
+              </div>
+              <p class="smallFocus maxTime">A las 20:45</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="clase2 sectionSelect">
-    <div class="row clearMargin">
-      <div class="input-field col s10 offset-s1  m4 offset-m4 ">
-        <select id="skinTone">
-          <option value="" disabled selected>Elige tu Tez</option>
-          <option value="1" data-icon="src/images/tipe1.jpg" class="left circle">Tipo 1 - Tez muy Clara</option>
-          <option value="2" data-icon="src/images/tipe2.jpg" class="left circle">Tipo 2 - Tez Clara</option>
-          <option value="3" data-icon="src/images/tipe3.jpg" class="left circle">Tipo 3 - Tez morena clara</option>
-          <option value="4" data-icon="src/images/tipe4.jpg" class="left circle">Tipo 4 - Tez morena oscura</option>
-          <option value="5" data-icon="src/images/tipe5.jpg" class="left circle">Tipo 5 - Tez oscura</option>
-          <option value="6" data-icon="src/images/tipe6.jpg" class="left circle">Tipo 6 - Tez muy oscura</option>
-        </select>
+    </section>
+    <section class="clase2 ">
+      <div class="row clearMargin">
+        <div class="input-field col s10 offset-s1 m6 offset-m3 sectionSelect">
+          <select id="skinTone">
+            <option value="" disabled selected>Elige tu Tez</option>
+            <option value="1" data-icon="src/images/tipe1.jpg" class="left circle">Tipo 1 - Tez muy Clara</option>
+            <option value="2" data-icon="src/images/tipe2.jpg" class="left circle">Tipo 2 - Tez Clara</option>
+            <option value="3" data-icon="src/images/tipe3.jpg" class="left circle">Tipo 3 - Tez morena clara</option>
+            <option value="4" data-icon="src/images/tipe4.jpg" class="left circle">Tipo 4 - Tez morena oscura</option>
+            <option value="5" data-icon="src/images/tipe5.jpg" class="left circle">Tipo 5 - Tez oscura</option>
+            <option value="6" data-icon="src/images/tipe6.jpg" class="left circle">Tipo 6 - Tez muy oscura</option>
+          </select>
+        </div>
       </div>
-    </div>
-    <div class="row clearMargin">
-      <div class="col s10 offset-s1  m4 offset-m4">
-        <select id="sunProtectionFactor">
-          <option value="" disabled selected>Elige tu protector solar</option>
-          <option value="0">Ninguno</option>
-          <option value="3">Factor 3 a 5</option>
-          <option value="15">Factor 15</option>
-          <option value="25">Factor 25</option>
-          <option value="30">Factor 30</option>
-          <option value="50">Factor 50</option>
-        </select>
+      <div class="row clearMargin">
+        <div class="col s10 offset-s1 m6 offset-m3 sectionSelect">
+          <select id="sunProtectionFactor">
+            <option value="" disabled selected>Elige tu protector solar</option>
+            <option value="0">Ninguno</option>
+            <option value="3">Factor 3 a 5</option>
+            <option value="15">Factor 15</option>
+            <option value="25">Factor 25</option>
+            <option value="30">Factor 30</option>
+            <option value="50">Factor 50</option>
+          </select>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="clase2">
-    <div class="row clearMargin">
-      <div class="col s12 exposureDiv m4 offset-m4">
-        <p class="recommendationTitle">Te recomentamos no permanecer bajo el sol por más de:</p>
-        <p class="recommendationTime">Indefinido</p>
+    </section>
+    <section class="clase2">
+      <div class="row clearMargin">
+        <div class="col s12 exposureDiv m6 offset-m3">
+          <p class="recommendationTitle">Te recomentamos no permanecer bajo el sol por más de:</p>
+          <p class="recommendationTime">Indefinido</p>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="clase2">
-    <div class="row clearMargin bottom">
-      <div class="col s12  m4 offset-m4">
-       <div class="row clearMargin">
-          <div class="col s8">
-           <input id="startInput" type="text" placeholder="Buscar otro lugar, Ej: Perú">
+    </section>
+    <section class="clase2">
+      <div class="row clearMargin">
+        <div class="col s12 m6 offset-m3 bottom">
+         <div class="row clearMargin">
+            <div class="col s8">
+             <input id="startInput" type="text" placeholder="Buscar otro lugar, Ej: Perú">
+           </div>
+           <div class="col s4">
+             <button id="search" class="button">Buscar Lugar</button>
+           </div>
          </div>
-         <div class="col s4">
-           <button id="search" class="button">Buscar Lugar</button>
-         </div>
-       </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
   <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
