@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-  <footer class="page-footer grey darken-4">
+  <footer class="page-footer grey darken-4 inicio">
     <div class="footer-copyright">
       <div class="container center">Copyright © 2018</div>
     </div>
@@ -51,17 +51,57 @@
      </div>
   </div> -->
   <section class="web">
-    <div class="container">
-      <div class="row">
-        <div class="col s12">
-          <button id="logout" class="btn" type="submit">Salir</button>
+    <div class="row clearMargin">
+      <div class="col s12 m4 offset-m4 firstSection">
+        <!-- Banner Top -->
+        <a id="logout" class="" type="submit">Salir<i class="material-icons">arrow_forward</i></a>
+      </div>
+    </div>
+  </section>
+  <section class="clase2">
+    <div class="row clearMargin">
+      <div class="col s12 noPadding m4 offset-m4">
+        <div class="row uvIndex clearMargin">
+          <div class="col s4">
+            <div class="logo"></div>
+          </div>
+          <div class="col s8">
+            <p class="indexNow">Ahora</p>
+            <p class="indexNowFocus">Índice Alto</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
   <section class="clase2">
-    <div class="row">
-      <div class="input-field col s10 offset-s1">
+    <div class="row clearMargin progressBar">
+      <div class="col s12 m4 offset-m4">
+        <div class="row clearMargin">
+          <div class="col s3 m2">
+            <div class="actColor">
+              <p class="smallTitle">ACT</p>
+              <p class="countText actual">15</p>
+            </div>
+            <p class="smallFocus actualTime">A las 20:45</p>
+          </div>
+          <div class="col s6 m8">
+            <!-- Progress Bar -->
+            <div id="circle"></div>
+          </div>
+          <div class="col s3 m2">
+            <div class="maxColor">
+              <p class="smallTitle">MAX</p>
+              <p class="countText max">15</p>
+            </div>
+            <p class="smallFocus maxTime">A las 20:45</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="clase2 sectionSelect">
+    <div class="row clearMargin">
+      <div class="input-field col s10 offset-s1  m4 offset-m4 ">
         <select id="skinTone">
           <option value="" disabled selected>Elige tu Tez</option>
           <option value="1" data-icon="src/images/tipe1.jpg" class="left circle">Tipo 1 - Tez muy Clara</option>
@@ -73,10 +113,8 @@
         </select>
       </div>
     </div>
-  </section>
-  <section class="clase2">
-    <div class="row">
-      <div class="col s10 offset-s1">
+    <div class="row clearMargin">
+      <div class="col s10 offset-s1  m4 offset-m4">
         <select id="sunProtectionFactor">
           <option value="" disabled selected>Elige tu protector solar</option>
           <option value="0">Ninguno</option>
@@ -90,14 +128,24 @@
     </div>
   </section>
   <section class="clase2">
-    <h2 id="exposureTime"></h2>
-    <div id="colorChange"></div>
-    <div class="row">
-      <div class="col s6">
-        <input id="startInput" type="text">
+    <div class="row clearMargin">
+      <div class="col s12 exposureDiv m4 offset-m4">
+        <p class="recommendationTitle">Te recomentamos no permanecer bajo el sol por más de:</p>
+        <p class="recommendationTime">Indefinido</p>
       </div>
-      <div class="col s6">
-        <button id="search" class="btn">Buscar lugar</button>
+    </div>
+  </section>
+  <section class="clase2">
+    <div class="row clearMargin bottom">
+      <div class="col s12  m4 offset-m4">
+       <div class="row clearMargin">
+          <div class="col s8">
+           <input id="startInput" type="text" placeholder="Buscar otro lugar, Ej: Perú">
+         </div>
+         <div class="col s4">
+           <button id="search" class="button">Buscar Lugar</button>
+         </div>
+       </div>
       </div>
     </div>
   </section>
@@ -108,6 +156,7 @@
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKOv5tv0rN5Mih51I-c6XHKhxCqa-AEC8&libraries=places" type="text/javascript"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <script src="src/moment.js"></script>
+  <script src="src/js/circle-progress.min.js"></script>
   <script src="src/app.js"></script>
 </body>
 </html>
