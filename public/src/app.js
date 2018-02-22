@@ -4,7 +4,7 @@ $(document).ready(function() {
   $('select').material_select();
   $('.web').hide();
   $('.clase2').hide();
-  $('.parallax').parallax();       
+  $('.parallax').parallax();
 });
 // Definiendo letiables
 let lat;
@@ -181,10 +181,10 @@ function activateSearch() {
 
 function displayMinutes(data) {
   let timeToShow;
-  let hours;          
+  let hours;
   let minutes;
   if (data.exposure_time !== null) {
-    hours = Math.floor(data.exposure_time / 60);          
+    hours = Math.floor(data.exposure_time / 60);
     minutes = data.exposure_time % 60;
     timeToShow = `${hours}Hrs y ${minutes} min`;
   } else {
@@ -196,7 +196,7 @@ function displayMinutes(data) {
 function uvColor(data) {
   // Nivel UV Color Change Section Function
   if (data.result.uv <= 3) {
-    $('body').css('background-color', '#558b2f');
+    $('body').css('background-color', '#39601F');
     $('.indexNowFocus').html('Índice Bajo');
     $('.actColor').css('background-color', '#558b2f');
   } else if (data.result.uv > 3 && data.result.uv <= 6) {
@@ -212,7 +212,7 @@ function uvColor(data) {
     $('body').css('background-color', '#B71C1C');
     $('.actColor').css('background-color', '#B71C1C');
   } else if (data.result.uv > 11) {
-    $('.indexNowFocus').html('Índice Extremadamente Alto');
+    $('.indexNowFocus').html('Índice Ext Alto');
     $('body').css('background-color', '#6A1B9A');
     $('.actColor').css('background-color', '#6A1B9A');
   }
@@ -223,7 +223,7 @@ function circleDisplay(data) {
     widthCircle = 250;
   } if ($(document).width() < 576 && $(document).width() > 300) {
     widthCircle = 130;
-  } 
+  }
   $('#circle').circleProgress({
     value: ((data.result.uv * 100) / 11) / 100,
     size: widthCircle,
