@@ -128,7 +128,8 @@ function getUVIndex() {
 
       circleDisplay(response);
       uvColor(response);
-      maxActNumbers(response.result)
+      colorMax(response);
+      maxActNumbers(response.result);
     },
     error: function(response) {
     }
@@ -182,14 +183,14 @@ function displayMinutes(data) {
   let timeToShow;
   let hours;          
   let minutes;
-  if (data.exposure_time != null) {
+  if (data.exposure_time !== null) {
     hours = Math.floor(data.exposure_time / 60);          
     minutes = data.exposure_time % 60;
     timeToShow = `${hours}Hrs y ${minutes} min`;
-  }else {
+  } else {
     timeToShow = 'Indefinido';
   }
-   $('.recommendationTime').text(timeToShow);
+  $('.recommendationTime').text(timeToShow);
   // console.log(data.exposure_time == null)
 };
 function uvColor(data) {
@@ -197,18 +198,23 @@ function uvColor(data) {
   if (data.result.uv <= 3) {
     $('body').css('background-color', '#558b2f');
     $('.indexNowFocus').html('Índice Bajo');
+    $('.actColor').css('background-color', '#558b2f');
   } else if (data.result.uv > 3 && data.result.uv <= 6) {
     $('.indexNowFocus').html('Índice Moderado');
     $('body').css('background-color', '#F9A825');
+    $('.actColor').css('background-color', '#F9A825');
   } else if (data.result.uv > 6 && data.result.uv <= 8) {
     $('.indexNowFocus').html('Índice Alto');
     $('body').css('background-color', '#EF6C00');
+    $('.actColor').css('background-color', '#EF6C00');
   } else if (data.result.uv > 8 && data.result.uv <= 11) {
     $('.indexNowFocus').html('Índice Muy Alto');
     $('body').css('background-color', '#B71C1C');
+    $('.actColor').css('background-color', '#B71C1C');
   } else if (data.result.uv > 11) {
     $('.indexNowFocus').html('Índice Extremadamente Alto');
     $('body').css('background-color', '#6A1B9A');
+    $('.actColor').css('background-color', '#6A1B9A');
   }
 }
 function circleDisplay(data) {
@@ -237,10 +243,18 @@ function maxActNumbers(data) {
   $('.max').html(Math.floor(data.uv_max));
   $('.actual').html(Math.floor(data.uv));
   $('.maxTime').html(`A las: ${localDate.format(dateFormat)}`);
-  $('.actualTime').html(`A las: ${moment().format('HH:mm')}`)
-}
-// function timeLeft() {
-
-//   // console.log(('' + (199/60)).split('.')[0] + " Hrs")
-//   // console.log((199/60 - parseInt(('' + (90/60)).split('.')[0])) * 60 + " Min")
-// };
+  $('.actualTime').html(`A las: ${moment().format('HH:mm')}`);
+};
+function colorMax(data) {
+  if (data.result.uv_max <= 3) {
+    $('.maxColor').css('background-color', '#558b2f');
+  } else if (data.uv_max > 3 && data.uv_max <= 6) {
+    $('.maxColor').css('background-color', '#F9A825');
+  } else if (data.uv_max > 6 && data.uv_max <= 8) {
+    $('.maxColor').css('background-color', '#EF6C00');
+  } else if (data.uv_max > 8 && data.uv_max <= 11) {
+    $('.maxColor').css('background-color', '#B71C1C');
+  } else if (data.uv_max > 11) {
+    $('.maxColor').css('background-color', '#6A1B9A');
+  };
+};
