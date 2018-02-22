@@ -1,9 +1,125 @@
-#colorChange{
-  width: 100px;
-  padding: 10%;
-  background-color: #558b2f;
-  transition: background-color 0.5s ease;;
+body{
+  background-color: #558b3f;
+  transition: background-color 0.5s ease;
+}
+.clearMargin{
+  margin: 0;
 }
 .parallax-container {
-      height: 50em;
+  height: 50em;
+}
+.firstSection{
+  background-color: rgba(0,0,0,0.35);
+  height: 2em;
+  text-align: right;
+  text-decoration: none;
+}
+.firstSection a{
+  color: #FFF;
+}
+.firstSection i{
+  vertical-align: -7px;
+  color: #FFF;
+}
+.row .col.uvIndex{
+  background-color: rgba(0,0,0,0.2);
+  padding: 0.7em;
+}
+.indexNow{
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: bolder;
+  margin: 0;
+  color: #fff;
+  text-shadow: 1px 1px 5px #000;
+}
+.indexNowFocus{
+  font-size: 2em;
+  text-align: center;
+  font-weight: bolder;
+  margin: 0;
+  color: #fff;
+  text-shadow: 2px 2px 5px #000;
+}
+.progressBar{
+  text-align: center;
+  padding: 1em;
+  /*background-color: rgba(0,0,0,0.1);*/
+}
+.col.exposureDiv{
+  text-align: center;
+  padding: 1.3em;
+  /*font-size: 1.3em;*/
+}
+.actColor{
+  width: 5em;
+  padding: 10%;
+  background-color: #558b3f;
+  box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,0.6);
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+  text-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+  color: #FFF;
+}
+.smallTitle{
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 1em;
+  margin: 0;
+  text-decoration: underline;
+}
+.maxColor{
+  width: 5em;
+  padding: 10%;
+  background-color: purple;
+  box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,0.6);
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+  text-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+  color: #FFF;
+  margin: 0;
+}
+.recommendationTitle{
+  font-size: 1.2em;
+  color: #FFF;
+  text-shadow: 2px 2px 5px #000;
+  margin: 0;
+}
+.recommendationTime{
+  font-size: 2em;
+  color: #FFF;
+  text-shadow: 2px 2px 5px #000;
+  font-weight: bolder;
+  margin: 0;
+}
+.bottom{
+  background-color: rgba(0,0,0,0.35);
+  padding: 0.7em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.sectionSelect{
+  background-color: rgba(0,0,0,0.1);
+}
+.countText{
+  font-size: 2em;
+  margin: 0;
+  font-weight: bolder;
+}
+.button{
+  border: none;
+  font-weight: bolder;
+  color: #FFF;
+  background-color: rgba(0,0,0,0.3);
+  padding: 0.5em;
+  box-sizing: border-box;
+}
+.smallFocus{
+  color: #FFF;
+  background-color: rgba(0,0,0,0.2);
+  padding: 0.5em;
+  box-sizing: border-box;
+  width: 110%;
 }

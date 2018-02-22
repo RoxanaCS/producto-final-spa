@@ -6,16 +6,16 @@ $(document).ready(function() {
   $('.clase2').hide();
   $('.parallax').parallax();       
 });
-// Definiendo variables
-var lat;
-var lng;
-var st;
-var spf;
+// Definiendo letiables
+let lat;
+let lng;
+let st;
+let spf;
 
 // Al hacer click en el boton de registro con google:
 document.getElementById('login').addEventListener('click', GoogleSignUp, false);
 // Initialize Firebase
-var config = {
+let config = {
   apiKey: 'AIzaSyC9DuOb1sFOe-0_rETYXkM44mtcK3CNkto',
   authDomain: 'producto-final-spa.firebaseapp.com',
   databaseURL: 'https://producto-final-spa.firebaseio.com',
@@ -25,15 +25,15 @@ var config = {
 };
 firebase.initializeApp(config);
 // función de ingreso con google
-var token = 'none';
-var user = 'none';
-var email = 'none';
+let token = 'none';
+let user = 'none';
+let email = 'none';
 // guardar los usuarios que se registren
-var userData = firebase.database().ref('users');
+let userData = firebase.database().ref('users');
 function GoogleSignUp() {
   // para saber si el usuario se ha conectado
   if (!firebase.auth().currentUser) {
-    var provider = new firebase.auth.GoogleAuthProvider();
+    let provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
     firebase.auth().signInWithPopup(provider).then(function(result) {
       token = result.credential.accessToken;
@@ -81,6 +81,7 @@ $('#logout').click(function() {
   firebase.auth().signOut();
   $('.inicio').show();
   $('.web').hide();
+  $('.clase2').hide();
 });
 // Función select skinTone
 $('#skinTone').on('change', function() {
@@ -108,8 +109,8 @@ function searchPosition() {
 }
 // Safe Exposure Time
 function getUVIndex() {
-  // var lat = $('#lat').val();
-  // var lng = $('#lng').val();
+  // let lat = $('#lat').val();
+  // let lng = $('#lng').val();
   // let st = 1;
   // let spf = 15;
   $.ajax({
@@ -124,24 +125,10 @@ function getUVIndex() {
       console.log(response.result.uv);
       console.log(response.result.uv_max);
       console.log(response.result.uv_max_time);
-      // transformar a la hora local
-      let dateFormat = 'HH:mm';
-      let testDateUtc = moment.utc(response.result.uv_max_time);
-      let localDate = testDateUtc.local();
-      console.log(localDate.format(dateFormat));
 
-      // Nivel UV Color Change Section Function
-      if (response.result.uv <= 3) {
-        $('#colorChange').css('background-color', '#558b2f');
-      } else if (response.result.uv > 3 && response.result.uv <= 6) {
-        $('#colorChange').css('background-color', '#F9A825');
-      } else if (response.result.uv > 6 && response.result.uv <= 8) {
-        $('#colorChange').css('background-color', '#EF6C00');
-      } else if (response.result.uv > 8 && response.result.uv <= 11) {
-        $('#colorChange').css('background-color', '#B71C1C');
-      } else if (response.result.uv > 11) {
-        $('#colorChange').css('background-color', '#6A1B9A');
-      }
+      circleDisplay(response);
+      uvColor(response);
+      maxActNumbers(response.result)
     },
     error: function(response) {
     }
@@ -150,8 +137,8 @@ function getUVIndex() {
 // console.log(pos.lat);
 // console.log(pos.lng);
 function getExposureIndex() {
-  /* var lat = -33.42;
-  var lng = -70.64;*/
+  /* let lat = -33.42;
+  let lng = -70.64;*/
   $.ajax({
     type: 'GET',
     dataType: 'json',
@@ -162,6 +149,7 @@ function getExposureIndex() {
     success: function(response) {
       // handle successful response
       console.log(response.result);
+      displayMinutes(response.result);
     },
     error: function(response) {
       // handle error response
@@ -186,6 +174,73 @@ $('#search').on('click', function() {
 });
 // función para autocompletar
 function activateSearch() {
-  var startInput = document.getElementById('startInput');
+  let startInput = document.getElementById('startInput');
   new google.maps.places.Autocomplete(startInput);
 }
+
+function displayMinutes(data) {
+  let timeToShow;
+  let hours;          
+  let minutes;
+  if (data.exposure_time != null) {
+    hours = Math.floor(data.exposure_time / 60);          
+    minutes = data.exposure_time % 60;
+    timeToShow = `${hours}Hrs y ${minutes} min`;
+  }else {
+    timeToShow = 'Indefinido';
+  }
+   $('.recommendationTime').text(timeToShow);
+  // console.log(data.exposure_time == null)
+};
+function uvColor(data) {
+  // Nivel UV Color Change Section Function
+  if (data.result.uv <= 3) {
+    $('body').css('background-color', '#558b2f');
+    $('.indexNowFocus').html('Índice Bajo');
+  } else if (data.result.uv > 3 && data.result.uv <= 6) {
+    $('.indexNowFocus').html('Índice Moderado');
+    $('body').css('background-color', '#F9A825');
+  } else if (data.result.uv > 6 && data.result.uv <= 8) {
+    $('.indexNowFocus').html('Índice Alto');
+    $('body').css('background-color', '#EF6C00');
+  } else if (data.result.uv > 8 && data.result.uv <= 11) {
+    $('.indexNowFocus').html('Índice Muy Alto');
+    $('body').css('background-color', '#B71C1C');
+  } else if (data.result.uv > 11) {
+    $('.indexNowFocus').html('Índice Extremadamente Alto');
+    $('body').css('background-color', '#6A1B9A');
+  }
+}
+function circleDisplay(data) {
+  let widthCircle;
+  if ($(document).width() > 576) {
+    widthCircle = 250;
+  } if ($(document).width() < 576 && $(document).width() > 300) {
+    widthCircle = 130;
+  } 
+  $('#circle').circleProgress({
+    value: ((data.result.uv * 100) / 11) / 100,
+    size: widthCircle,
+    thickness: 40,
+    fill: {
+      image: 'src/images/uvColor.png',
+    }
+  });
+};
+function maxActNumbers(data) {
+  // transformar a la hora local
+  let dateFormat = 'HH:mm';
+  let testDateUtc = moment.utc(data.uv_max_time);
+  let localDate = testDateUtc.local();
+  // console.log(localDate.format(dateFormat));
+
+  $('.max').html(Math.floor(data.uv_max));
+  $('.actual').html(Math.floor(data.uv));
+  $('.maxTime').html(`A las: ${localDate.format(dateFormat)}`);
+  $('.actualTime').html(`A las: ${moment().format('HH:mm')}`)
+}
+// function timeLeft() {
+
+//   // console.log(('' + (199/60)).split('.')[0] + " Hrs")
+//   // console.log((199/60 - parseInt(('' + (90/60)).split('.')[0])) * 60 + " Min")
+// };

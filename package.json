@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/RoxanaCS/producto-final-spa#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "jquery-circle-progress": "^1.2.2"
   }
 }
